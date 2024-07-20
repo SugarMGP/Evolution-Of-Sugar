@@ -239,8 +239,8 @@ public class EntityFriend extends TameableEntity implements IAngerable {
     @Override
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
-        this.dataManager.set(RANK, compound.getInt("Rank"));
-        this.dataManager.set(MEMBER, compound.getInt("Member"));
+        this.dataManager.set(RANK, compound.getInt("rank"));
+        this.dataManager.set(MEMBER, compound.getInt("member"));
         if (!this.world.isRemote) {
             this.readAngerNBT((ServerWorld) this.world, compound);
         }
@@ -249,8 +249,8 @@ public class EntityFriend extends TameableEntity implements IAngerable {
     @Override
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
-        compound.putInt("Rank", this.dataManager.get(RANK));
-        compound.putInt("Member", this.dataManager.get(MEMBER));
+        compound.putInt("rank", this.dataManager.get(RANK));
+        compound.putInt("member", this.dataManager.get(MEMBER));
         this.writeAngerNBT(compound);
     }
 
