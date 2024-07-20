@@ -14,7 +14,8 @@ public enum EnumFriendMembers {
     CalciumSilicate(true),
     Ping_yuGTS,
     Ultrahiperism,
-    MoonBigD;
+    MoonBigD,
+    bilicapr(true);
 
     private final boolean slim;
 
