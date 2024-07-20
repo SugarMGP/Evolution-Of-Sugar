@@ -132,14 +132,14 @@ public class EntityFriend extends TameableEntity implements IAngerable {
 
     @Override
     public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) {
-        if((target instanceof CreeperEntity) || (target instanceof GhastEntity)){
+        if ((target instanceof CreeperEntity) || (target instanceof GhastEntity)) {
             return false;
         }
         if (target instanceof EntityFriend) {
-                return false;
+            return false;
         }
         if (target instanceof PlayerEntity && owner instanceof PlayerEntity && !((PlayerEntity) owner).canAttackPlayer((PlayerEntity) target)) {
-                return false;
+            return false;
         }
         return !(target instanceof TameableEntity) || !((TameableEntity) target).isTamed();
     }
