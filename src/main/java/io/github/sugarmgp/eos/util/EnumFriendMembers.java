@@ -12,7 +12,9 @@ public enum EnumFriendMembers {
     Wubaozi123,
     xtexChooser,
     CalciumSilicate(true),
-    Ping_yuGTS;
+    Ping_yuGTS,
+    Ultrahiperism,
+    MoonBigD;
 
     private final boolean slim;
 
