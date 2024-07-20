@@ -87,7 +87,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
                 if (Objects.equals(this.getOwner(), player)) {
                     if (this.getHealth() < this.getMaxHealth()) {
                         if (this.world.isRemote) {
-                            this.playEffect(ParticleTypes.HEART, this.getPosX(), this.getPosY() + 0.375, this.getPosZ(), 4);
+                            this.playEffect(ParticleTypes.HEART, this.getPosX(), this.getPosY() + 0.35, this.getPosZ(), 4, 2.2);
                             return ActionResultType.SUCCESS;
                         }
                         if (!player.isCreative()) {
@@ -100,7 +100,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
                 }
             } else if (!this.func_233678_J__()) {
                 if (this.world.isRemote) {
-                    this.playEffect(ParticleTypes.HAPPY_VILLAGER, this.getPosX(), this.getPosY() + 0.415, this.getPosZ(), 8);
+                    this.playEffect(ParticleTypes.HAPPY_VILLAGER, this.getPosX(), this.getPosY() + 0.4, this.getPosZ(), 8, 2.4);
                     return ActionResultType.SUCCESS;
                 }
                 if (!player.isCreative()) {
@@ -118,12 +118,12 @@ public class EntityFriend extends TameableEntity implements IAngerable {
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected void playEffect(BasicParticleType particleTypes, Double posX, Double posY, Double posZ, int times) {
+    protected void playEffect(BasicParticleType particleTypes, Double posX, Double posY, Double posZ, int times, double offset) {
         for (int i = 1; i <= times; ++i) {
             this.world.addParticle(particleTypes,
-                    posX + this.rand.nextDouble() * this.getWidth() * 1.5 - this.getWidth(),
+                    posX + this.rand.nextDouble() * this.getWidth() * offset - this.getWidth(),
                     posY + this.rand.nextDouble() * this.getHeight() * 0.8,
-                    posZ + this.rand.nextDouble() * this.getWidth() * 1.5 - this.getWidth(),
+                    posZ + this.rand.nextDouble() * this.getWidth() * offset - this.getWidth(),
                     this.rand.nextGaussian() * 0.015,
                     this.rand.nextGaussian() * 0.015,
                     this.rand.nextGaussian() * 0.015
@@ -153,7 +153,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
 
         BasicParticleType particleType = this.getRank().getParticleType();
         if (this.world.isRemote && particleType != null && (this.getMotion().x != 0.0D || this.getMotion().z != 0.0D)) { //在移动时播放粒子效果
-            this.playEffect(particleType, this.getPosX(), this.getPosY() - 0.45, this.getPosZ(), 1);
+            this.playEffect(particleType, this.getPosX(), this.getPosY() - 0.5, this.getPosZ(), 1, 1.6);
         }
 
         int regenerationLevel = this.getRank().getRegenerationLevel();
