@@ -24,8 +24,8 @@ public enum EnumFriendMembers {
         this.slim = false;
     }
 
-    EnumFriendMembers(boolean slimIn) {
-        this.slim = slimIn;
+    EnumFriendMembers(boolean slim) {
+        this.slim = slim;
     }
 
     public static EnumFriendMembers getByKey(int key) {
