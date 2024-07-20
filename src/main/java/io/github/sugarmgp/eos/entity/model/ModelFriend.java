@@ -88,7 +88,6 @@ public class ModelFriend<T extends LivingEntity> extends BipedModel<T> {
         if (this.modelRenderers == null) {
             this.modelRenderers = Lists.newArrayList();
         }
-
         this.modelRenderers.add(modelRenderer);
     }
 
