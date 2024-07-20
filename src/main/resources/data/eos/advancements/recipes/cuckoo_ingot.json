@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "eos:cuckoo_block"
-            ]
+            "item": "eos:cuckoo_block"
           }
         ]
       },
