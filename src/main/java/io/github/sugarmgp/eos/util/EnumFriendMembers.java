@@ -29,8 +29,7 @@ public enum EnumFriendMembers {
     }
 
     public static int randomGetKey(Random rand) {
-        int num = rand.nextInt(EnumFriendMembers.values().length);
-        return num;
+        return rand.nextInt(EnumFriendMembers.values().length);
     }
 
     public int getKey() {

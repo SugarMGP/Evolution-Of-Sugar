@@ -37,6 +37,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 import java.util.UUID;
 
 public class EntityFriend extends TameableEntity implements IAngerable {
@@ -82,7 +83,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
         Item item = itemStack.getItem();
         if (item.equals(ItemHandler.itemFunnyApple.get())) {
             if (this.isTamed()) {
-                if (this.getOwner().equals(player)) {
+                if (Objects.equals(this.getOwner(), player)) {
                     if (this.getHealth() < this.getMaxHealth()) {
                         if (this.world.isRemote) {
                             this.playEffect(ParticleTypes.HEART, this.getPosX(), this.getPosY() + 0.375, this.getPosZ(), 4);
@@ -118,14 +119,13 @@ public class EntityFriend extends TameableEntity implements IAngerable {
     @OnlyIn(Dist.CLIENT)
     protected void playEffect(BasicParticleType particleTypes, Double posX, Double posY, Double posZ, int times) {
         for (int i = 1; i <= times; ++i) {
-            double d0 = this.rand.nextGaussian() * 0.015; //白糖自研随机算法
-            double d1 = this.rand.nextGaussian() * 0.015;
-            double d2 = this.rand.nextGaussian() * 0.015;
             this.world.addParticle(particleTypes,
                     posX + this.rand.nextDouble() * this.getWidth() * 1.5 - this.getWidth(),
                     posY + this.rand.nextDouble() * this.getHeight() * 0.8,
                     posZ + this.rand.nextDouble() * this.getWidth() * 1.5 - this.getWidth(),
-                    d0, d1, d2
+                    this.rand.nextGaussian() * 0.015,
+                    this.rand.nextGaussian() * 0.015,
+                    this.rand.nextGaussian() * 0.015
             );
         }
     }

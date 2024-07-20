@@ -23,10 +23,10 @@ public class ItemTorcherino extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        playerIn.swingArm(Hand.MAIN_HAND);
+        playerIn.swingArm(handIn);
         if (!worldIn.isRemote) {
             int count = playerIn.getHeldItemMainhand().getCount();
-            playerIn.setHeldItem(Hand.MAIN_HAND, ItemStack.EMPTY);
+            playerIn.setHeldItem(handIn, ItemStack.EMPTY);
             playerIn.sendStatusMessage(new TranslationTextComponent("message.torcherino.use"), false);
             playerIn.sendStatusMessage(new TranslationTextComponent("message.torcherino.use2"), false);
             if (!ConfigHandler.torcherinoExploding.get()) {

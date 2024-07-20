@@ -27,11 +27,11 @@ public abstract class LayerStuckInBody<T extends LivingEntity, M extends ModelFr
     @Override
     public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         int i = this.func_225631_a_(livingEntityIn);
-        Random random = new Random((long) livingEntityIn.getEntityId());
+        Random random = new Random(livingEntityIn.getEntityId());
         if (i > 0) {
             for (int j = 0; j < i; ++j) {
                 matrixStackIn.push();
-                ModelRenderer modelRenderer = ((ModelFriend) this.getEntityModel()).getRandomModelRenderer(random);
+                ModelRenderer modelRenderer = this.getEntityModel().getRandomModelRenderer(random);
                 ModelRenderer.ModelBox modelRenderer$modelBox = modelRenderer.getRandomCube(random);
                 modelRenderer.translateRotate(matrixStackIn);
                 float f = random.nextFloat();
@@ -40,7 +40,7 @@ public abstract class LayerStuckInBody<T extends LivingEntity, M extends ModelFr
                 float f3 = MathHelper.lerp(f, modelRenderer$modelBox.posX1, modelRenderer$modelBox.posX2) / 16.0F;
                 float f4 = MathHelper.lerp(f1, modelRenderer$modelBox.posY1, modelRenderer$modelBox.posY2) / 16.0F;
                 float f5 = MathHelper.lerp(f2, modelRenderer$modelBox.posZ1, modelRenderer$modelBox.posZ2) / 16.0F;
-                matrixStackIn.translate((double) f3, (double) f4, (double) f5);
+                matrixStackIn.translate(f3, f4, f5);
                 f = -1.0F * (f * 2.0F - 1.0F);
                 f1 = -1.0F * (f1 * 2.0F - 1.0F);
                 f2 = -1.0F * (f2 * 2.0F - 1.0F);
