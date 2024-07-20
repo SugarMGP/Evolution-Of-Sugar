@@ -15,7 +15,8 @@ public enum EnumFriendMembers {
     Ping_yuGTS,
     Ultrahiperism,
     MoonBigD,
-    bilicapr(true);
+    bilicapr(true),
+    kid_sui;
 
     private final boolean slim;
 
