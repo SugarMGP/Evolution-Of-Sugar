@@ -9,6 +9,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.GhastEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -132,13 +133,13 @@ public class EntityFriend extends TameableEntity implements IAngerable {
 
     @Override
     public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) {
-        if ((target instanceof CreeperEntity) || (target instanceof GhastEntity)) {
+        if ((target instanceof CreeperEntity) || (target instanceof GhastEntity) || (target instanceof EnderDragonEntity)) {
             return false;
         }
         if (target instanceof EntityFriend) {
             return false;
         }
-        if (target instanceof PlayerEntity && owner instanceof PlayerEntity && !((PlayerEntity) owner).canAttackPlayer((PlayerEntity) target)) {
+        if (target instanceof PlayerEntity) {
             return false;
         }
         return !(target instanceof TameableEntity) || !((TameableEntity) target).isTamed();
