@@ -130,19 +130,18 @@ public class EntityFriend extends TameableEntity implements IAngerable {
         }
     }
 
-    public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) { //修改自WolfEntity
-        if (!(target instanceof CreeperEntity) && !(target instanceof GhastEntity)) {
-            if (target instanceof EntityFriend) {
-                EntityFriend entity = (EntityFriend) target;
-                return !entity.isTamed() || entity.getOwner() != owner;
-            } else if (target instanceof PlayerEntity && owner instanceof PlayerEntity && !((PlayerEntity) owner).canAttackPlayer((PlayerEntity) target)) {
-                return false;
-            } else {
-                return !(target instanceof TameableEntity) || !((TameableEntity) target).isTamed();
-            }
-        } else {
+    @Override
+    public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) {
+        if((target instanceof CreeperEntity) || (target instanceof GhastEntity)){
             return false;
         }
+        if (target instanceof EntityFriend) {
+                return false;
+        }
+        if (target instanceof PlayerEntity && owner instanceof PlayerEntity && !((PlayerEntity) owner).canAttackPlayer((PlayerEntity) target)) {
+                return false;
+        }
+        return !(target instanceof TameableEntity) || !((TameableEntity) target).isTamed();
     }
 
     @Override
