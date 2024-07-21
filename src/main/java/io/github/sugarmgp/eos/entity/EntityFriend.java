@@ -11,7 +11,6 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.GhastEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -69,13 +68,11 @@ public class EntityFriend extends TameableEntity implements IAngerable {
         this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setCallsForHelp());
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, LivingEntity.class, 7, true, false, new Predicate<LivingEntity>() {
-            public boolean apply(@Nullable LivingEntity entity) {
-                return entity instanceof MonsterEntity && !(entity instanceof CreeperEntity) && !entity.isInvisible(); //选择怪物进行攻击
-            }
+        this.targetSelector.addGoal(3, (new HurtByTargetGoal(this, EnderDragonEntity.class, FlyingEntity.class)).setCallsForHelp());
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 7, true, false, (Predicate<LivingEntity>) entity -> {
+            return entity instanceof MonsterEntity && !(entity instanceof CreeperEntity) && !entity.isInvisible(); //选择怪物进行攻击
         }));
-        this.targetSelector.addGoal(5, new ResetAngerGoal(this, true));
+        this.targetSelector.addGoal(5, new ResetAngerGoal<>(this, true));
     }
 
     @Override
@@ -133,7 +130,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
 
     @Override
     public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) {
-        if ((target instanceof CreeperEntity) || (target instanceof GhastEntity) || (target instanceof EnderDragonEntity)) {
+        if ((target instanceof CreeperEntity) || (target instanceof FlyingEntity) || (target instanceof EnderDragonEntity)) {
             return false;
         }
         if (target instanceof EntityFriend) {
@@ -224,7 +221,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
     }
 
     @Override
-    public EntityFriend func_241840_a(ServerWorld p_241840_1_, AgeableEntity p_241840_2_) {
+    public EntityFriend func_241840_a(ServerWorld world, AgeableEntity entity) {
         return null;
     }
 
