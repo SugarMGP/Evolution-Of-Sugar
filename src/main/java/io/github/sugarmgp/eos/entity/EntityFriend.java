@@ -70,7 +70,7 @@ public class EntityFriend extends TameableEntity implements IAngerable {
         this.targetSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this, EnderDragonEntity.class, FlyingEntity.class)).setCallsForHelp());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 7, true, false, (Predicate<LivingEntity>) entity -> {
-            return entity instanceof MonsterEntity && !(entity instanceof CreeperEntity) && !entity.isInvisible(); //选择怪物进行攻击
+            return entity instanceof MonsterEntity && !(entity instanceof CreeperEntity) && !(entity instanceof IAngerable) && !entity.isInvisible(); //选择怪物进行攻击
         }));
         this.targetSelector.addGoal(5, new ResetAngerGoal<>(this, true));
     }
