@@ -14,16 +14,16 @@
 
 ## 模组介绍
 
-一位非著名鸽子 [@SugarMGP](https://github.com/SugarMGP) 决定制作一个用于练习的 MC 模组，同时来纪念他的小伙伴们。
+一位非著名鸽子 [@SugarMGP](https://github.com/SugarMGP) 决定制作一个用于练习的模组，同时来纪念他的好朋友们。
 
 ## 开发状态
 
-EOS 目前由 **Sugar Workshop** 维护，目前处于非常早期的版本。如果你对这个模组有意见或建议，你可以直接联系我们或者[提出 Issue](https://github.com/SugarWorkshop/Evolution-Of-Sugar/issues)。
+Evolution Of Sugar 目前由 **Sugar Workshop** 维护。如果你对这个模组有意见或建议，你可以直接联系我们或者[提出 Issue](https://github.com/SugarWorkshop/Evolution-Of-Sugar/issues)。
 
 ## 模组基本信息
 
 - Minecraft 版本: 1.16.5
-- Forge 版本: 36.2.39
+- Forge 版本: 36.2.42
 - Mod 版本: [![Latest](https://img.shields.io/github/v/release/SugarWorkshop/Evolution-Of-Sugar?include_prereleases)](https://github.com/SugarWorkshop/Evolution-Of-Sugar/releases)
 
 ## 如何游玩
@@ -53,5 +53,5 @@ gradlew build
 
 ## 特别鸣谢
 
-1. 成绩优越、品德高尚、乐于助人、和蔼可亲、人见人爱の吉祥物 [@KitraMGP](https://github.com/zi-jing)
+1. 成绩优越、品德高尚、乐于助人、和蔼可亲、人见人爱の吉祥物 [@KitraMGP](https://github.com/KitraMGP)
 2. 此 Mod 名字的由来 [Evolution-Of-Knowledge](https://github.com/gonggongjohn/Evolution-Of-Knowledge)
